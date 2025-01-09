@@ -1,61 +1,49 @@
-const API_URL = "http://localhost:3000/api/liste";
+// Pfad zur XML-Datei
+const XML_URL = "daten.xml";
 
-// Funktion, um die Liste aus dem Server zu laden
-function loadList(category) {
-    fetch(`${API_URL}/${category}`)
-        .then(response => response.json())
+// Funktion, um die XML-Daten zu laden
+function loadXML() {
+    fetch(XML_URL)
+        .then(response => response.text())
         .then(data => {
-            const list = document.getElementById(`${category}-list`);
-            list.innerHTML = "";
-            data.items.forEach(item => {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `
-                    ${item}
-                    <button class="edit-btn" onclick="editItem(this, '${category}')">Bearbeiten</button>
-                `;
-                list.appendChild(listItem);
-            });
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data, "application/xml");
+            displayPackliste(xmlDoc);
         })
-        .catch(error => console.error("Fehler beim Laden:", error));
+        .catch(error => console.error("Fehler beim Laden der XML-Datei:", error));
 }
 
-// Funktion zum Hinzufügen eines neuen Elements
-function addItem(category) {
-    const input = document.getElementById(`${category}-input`);
-    const newItem = input.value.trim();
+// Funktion, um die Packliste anzuzeigen
+function displayPackliste(xmlDoc) {
+    const container = document.getElementById("content");
+    container.innerHTML = ""; // Vorherige Inhalte löschen
 
-    if (newItem) {
-        fetch(`${API_URL}/${category}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ item: newItem })
-        })
-        .then(() => {
-            input.value = "";
-            loadList(category);
-        })
-        .catch(error => console.error("Fehler beim Hinzufügen:", error));
-    }
+    const kategorien = xmlDoc.getElementsByTagName("kategorie");
+
+    Array.from(kategorien).forEach(kategorie => {
+        const kategorieName = kategorie.getAttribute("name");
+        const items = kategorie.getElementsByTagName("item");
+
+        // Kategorie-Container erstellen
+        const listDiv = document.createElement("div");
+        listDiv.classList.add("list");
+
+        const title = document.createElement("h2");
+        title.textContent = kategorieName.charAt(0).toUpperCase() + kategorieName.slice(1);
+        listDiv.appendChild(title);
+
+        // Liste der Items erstellen
+        const ul = document.createElement("ul");
+        Array.from(items).forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item.textContent;
+            ul.appendChild(li);
+        });
+
+        listDiv.appendChild(ul);
+        container.appendChild(listDiv);
+    });
 }
 
-// Funktion zum Bearbeiten eines Elements
-function editItem(button, category) {
-    const listItem = button.parentElement;
-    const currentText = listItem.firstChild.textContent.trim();
-    const newText = prompt("Bearbeiten:", currentText);
-
-    if (newText !== null && newText.trim() !== "") {
-        fetch(`${API_URL}/${category}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ oldItem: currentText, newItem: newText.trim() })
-        })
-        .then(() => loadList(category))
-        .catch(error => console.error("Fehler beim Bearbeiten:", error));
-    }
-}
-
-// Liste beim Laden der Seite laden
-window.onload = () => {
-    ["kleidung", "hygiene", "freizeit", "sonstiges"].forEach(loadList);
-};
+// XML beim Laden der Seite laden
+window.onload = loadXML;
