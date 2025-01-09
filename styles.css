@@ -18,6 +18,10 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    color: #4b382a;
+}
+
 .container {
     padding: 20px;
     max-width: 800px;
@@ -43,6 +47,14 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.list ul li:last-child {
+    border-bottom: none;
+}
+
+.add-item {
+    margin-top: 10px;
 }
 
 .add-item input {
