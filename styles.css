@@ -13,6 +13,13 @@ header {
     text-align: center;
 }
 
+header .logo {
+    display: block;
+    max-width: 100%; /* Begrenze die Breite des Logos auf die Bildschirmbreite */
+    height: auto; /* Behalte das Seitenverhältnis bei */
+    margin: 0 auto; /* Zentriere das Logo */
+}
+
 .container {
     padding: 20px;
     max-width: 800px;
