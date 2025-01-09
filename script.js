@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:3000/api/liste";
 
-// Funktion, um die Liste vom Server zu laden
+// Funktion, um die Liste aus dem Server zu laden
 function loadList(category) {
     fetch(`${API_URL}/${category}`)
         .then(response => response.json())
@@ -57,5 +57,5 @@ function editItem(button, category) {
 
 // Liste beim Laden der Seite laden
 window.onload = () => {
-    loadList("kleidung");
+    ["kleidung", "hygiene", "freizeit", "sonstiges"].forEach(loadList);
 };
