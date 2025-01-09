@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:3000/api/liste";
 
-// Funktion, um die Liste aus dem Server zu laden
+// Funktion, um die Liste vom Server zu laden
 function loadList(category) {
     fetch(`${API_URL}/${category}`)
         .then(response => response.json())
@@ -19,26 +19,26 @@ function loadList(category) {
         .catch(error => console.error("Fehler beim Laden:", error));
 }
 
-// Funktion, um ein neues Element hinzuzufügen
+// Funktion zum Hinzufügen eines neuen Elements
 function addItem(category) {
     const input = document.getElementById(`${category}-input`);
-    const itemText = input.value.trim();
+    const newItem = input.value.trim();
 
-    if (itemText) {
+    if (newItem) {
         fetch(`${API_URL}/${category}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ item: itemText })
+            body: JSON.stringify({ item: newItem })
         })
         .then(() => {
-            loadList(category); // Liste neu laden
             input.value = "";
+            loadList(category);
         })
         .catch(error => console.error("Fehler beim Hinzufügen:", error));
     }
 }
 
-// Funktion, um ein Element zu bearbeiten
+// Funktion zum Bearbeiten eines Elements
 function editItem(button, category) {
     const listItem = button.parentElement;
     const currentText = listItem.firstChild.textContent.trim();
@@ -50,12 +50,12 @@ function editItem(button, category) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ oldItem: currentText, newItem: newText.trim() })
         })
-        .then(() => loadList(category)) // Liste neu laden
+        .then(() => loadList(category))
         .catch(error => console.error("Fehler beim Bearbeiten:", error));
     }
 }
 
-// Beim Laden der Seite die Liste laden
+// Liste beim Laden der Seite laden
 window.onload = () => {
     loadList("kleidung");
 };
