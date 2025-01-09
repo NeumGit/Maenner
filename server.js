@@ -26,7 +26,7 @@ function saveData(data) {
 // API-Endpunkt: Liste für eine Kategorie abrufen
 app.get("/api/liste/:category", (req, res) => {
     const data = loadData();
-    const category = req.params.category;
+    const category = req.params.category; 
     res.json({ items: data[category] || [] });
 });
 
