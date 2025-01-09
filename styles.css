@@ -11,15 +11,25 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px; /* Passt die Größe des Logos an */
 }
 
 h1 {
     font-size: 2em;
     margin: 0;
+    padding-top: 20px; /* Abstand für das Logo schaffen */
 }
 
 h2 {
     color: #4b382a;
+    margin-bottom: 10px;
 }
 
 .container {
