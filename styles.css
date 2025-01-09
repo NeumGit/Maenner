@@ -11,20 +11,14 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
-    position: relative;
-} 
+}
 
 header .logo {
     display: block;
-    max-width: 100%; /* Begrenze die Breite auf 100% der Bildschirmbreite */
-    max-height: 150px; /* Begrenze die maximale Höhe */
+    max-width: 100%;
+    max-height: 150px;
     height: auto;
-    margin: 0 auto; /* Zentriert das Logo */
-}
-
-h1 {
-    margin-top: 10px;
-    font-size: 2em;
+    margin: 0 auto;
 }
 
 .container {
@@ -70,5 +64,15 @@ h1 {
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin-left: 10px;
     cursor: pointer;
 }
