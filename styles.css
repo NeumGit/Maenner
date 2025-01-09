@@ -15,7 +15,7 @@ header {
 
 header .logo {
     display: block;
-    max-width: 100%; /* Begrenze die Breite des Logos auf die Bildschirmbreite */
+    max-width: 80%; /* Begrenze die Breite des Logos auf die Bildschirmbreite */
     height: auto; /* Behalte das Seitenverhältnis bei */
     margin: 0 auto; /* Zentriere das Logo */
 }
