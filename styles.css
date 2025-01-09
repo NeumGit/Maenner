@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f1e3;
+    color: #4b382a;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #d4a373;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.list {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-item input {
+    padding: 5px;
+    width: calc(100% - 100px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-item button {
+    padding: 6px 15px;
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-item button:hover {
+    background-color: #b5895a;
+}
+
+.edit-btn {
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px 10px;
+    margin-left: 10px;
+}
+
+.edit-btn:hover {
+    background-color: #b5895a;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #d4a373;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
