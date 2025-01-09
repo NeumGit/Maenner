@@ -1,22 +1,26 @@
-function addItem(section) {
-    const input = document.getElementById(`${section}-input`);
-    const list = document.getElementById(`${section}-list`);
-    const newItem = input.value.trim();
+// Funktion zum Hinzufügen eines neuen Elements zur Liste
+function addItem(category) {
+    const input = document.getElementById(`${category}-input`);
+    const list = document.getElementById(`${category}-list`);
 
-    if (newItem) {
-        const li = document.createElement('li');
-        li.innerHTML = `${newItem} <button class="edit-btn" onclick="editItem(this)">Bearbeiten</button>`;
-        list.appendChild(li);
-        input.value = '';
+    if (input.value.trim() !== "") {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+            ${input.value.trim()}
+            <button class="edit-btn" onclick="editItem(this)">Bearbeiten</button>
+        `;
+        list.appendChild(listItem);
+        input.value = "";
     }
 }
 
+// Funktion zum Bearbeiten eines bestehenden Listenelements
 function editItem(button) {
-    const li = button.parentElement;
-    const currentText = li.firstChild.textContent.trim();
-    const newText = prompt('Neuen Text eingeben:', currentText);
+    const listItem = button.parentElement;
+    const currentText = listItem.firstChild.textContent.trim();
+    const newText = prompt("Bearbeiten:", currentText);
 
-    if (newText !== null && newText.trim() !== '') {
-        li.firstChild.textContent = newText;
+    if (newText !== null && newText.trim() !== "") {
+        listItem.firstChild.textContent = newText.trim();
     }
 }
