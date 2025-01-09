@@ -11,25 +11,6 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
-    position: relative;
-}
-
-header .logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 100px; /* Passt die Größe des Logos an */
-}
-
-h1 {
-    font-size: 2em;
-    margin: 0;
-    padding-top: 20px; /* Abstand für das Logo schaffen */
-}
-
-h2 {
-    color: #4b382a;
-    margin-bottom: 10px;
 }
 
 .container {
@@ -42,21 +23,7 @@ h2 {
     background-color: #ffffff;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-}
-
-.list ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.list ul li {
-    padding: 5px 0;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .add-item {
@@ -65,7 +32,6 @@ h2 {
 
 .add-item input {
     padding: 5px;
-    width: calc(100% - 100px);
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -78,16 +44,3 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.add-item button:hover {
-    background-color: #b5895a;
-}
-
-.edit-btn {
-    background-color: #d4a373;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 3px 10px;
-    margin-left: 10
