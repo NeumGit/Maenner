@@ -1,4 +1,4 @@
-const API_URL = "http://<dein-raspberry-ip>:3000/api/packliste"; // Ersetze <dein-raspberry-ip> mit der IP deines Raspberry Pi
+const API_URL = "http://sneumann.selfhost.co:3000/api/packliste"; // Ersetze <dein-raspberry-ip> mit der IP deines Raspberry Pi
 
 // Packliste vom Backend laden
 function loadPackliste() {
