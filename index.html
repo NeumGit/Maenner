@@ -4,15 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Männer-Wellness Packliste</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Männer-Wellness Packliste</h1>
         <p>Alles, was ihr für euren Bier-Wellness-Ausflug benötigt!</p>
     </header>
-    <div class="container" id="content"></div>
-    <footer>Viel Spaß beim Männer-Wellness-Ausflug! 🍻</footer>
+
+    <main>
+        <div class="category">
+            <h2>Kleidung</h2>
+            <ul id="kleidung-list">
+                <li>2-3 T-Shirts</li>
+                <li>2 Hemden oder Poloshirts</li>
+            </ul>
+            <div class="add-item">
+                <input type="text" id="kleidung-input" placeholder="Neues Kleidungsstück hinzufügen...">
+                <button onclick="addItem('kleidung')">Hinzufügen</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Wellness & Hygiene</h2>
+            <ul id="hygiene-list">
+                <li>Handtuch und Bademantel</li>
+                <li>Duschgel/Shampoo</li>
+            </ul>
+            <div class="add-item">
+                <input type="text" id="hygiene-input" placeholder="Neues Hygieneprodukt hinzufügen...">
+                <button onclick="addItem('hygiene')">Hinzufügen</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Freizeit & Unterhaltung</h2>
+            <ul id="freizeit-list">
+                <li>Buch oder Zeitschriften</li>
+                <li>Kopfhörer</li>
+            </ul>
+            <div class="add-item">
+                <input type="text" id="freizeit-input" placeholder="Neues Freizeitprodukt hinzufügen...">
+                <button onclick="addItem('freizeit')">Hinzufügen</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Sonstiges</h2>
+            <ul id="sonstiges-list">
+                <li>Reisepass/Personalausweis</li>
+                <li>Powerbank</li>
+            </ul>
+            <div class="add-item">
+                <input type="text" id="sonstiges-input" placeholder="Neues hinzufügen...">
+                <button onclick="addItem('sonstiges')">Hinzufügen</button>
+            </div>
+        </div>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
