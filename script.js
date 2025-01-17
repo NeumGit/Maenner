@@ -1,4 +1,4 @@
-const API_URL = "http://sneumann.selfhost.co:3000/daten.xml"; // Ersetze mit deiner Backend-URL
+const API_URL = "https://sneumann.selfhost.co:3000/daten.xml"; // Ersetze mit deiner Backend-URL
 
 // Funktion, um die XML-Daten vom Backend zu laden
 function loadPackliste() {
