@@ -1,39 +1,38 @@
-const API_URL = "http://sneumann.selfhost.co:3000/api/packliste"; // Ersetze <dein-raspberry-ip> mit der IP deines Raspberry Pi
+const API_URL = "http://sneumann.selfhost.co:3000/daten.xml"; // Ersetze mit deiner Backend-URL
 
-// Packliste vom Backend laden
-function loadPackliste() {
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            displayPackliste(data);
-        })
-        .catch(error => console.error("Fehler beim Laden der Packliste:", error));
-}
+fetch(API_URL)
+    .then(response => response.text())
+    .then(data => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "application/xml");
+        displayPackliste(xmlDoc);
+    })
+    .catch(error => console.error("Fehler beim Laden der XML-Daten:", error));
 
-// Packliste im Frontend anzeigen
-function displayPackliste(data) {
+function displayPackliste(xmlDoc) {
+    const categories = xmlDoc.getElementsByTagName("kategorie");
     const content = document.getElementById("content");
-    content.innerHTML = ""; // Inhalt zurücksetzen
+    content.innerHTML = "";
 
-    for (const category in data) {
+    Array.from(categories).forEach(category => {
+        const categoryName = category.getAttribute("name");
+        const items = category.getElementsByTagName("item");
+
         const section = document.createElement("div");
-        section.classList.add("list");
+        section.classList.add("category");
 
         const title = document.createElement("h2");
-        title.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        title.textContent = categoryName;
         section.appendChild(title);
 
         const ul = document.createElement("ul");
-        data[category].forEach(item => {
+        Array.from(items).forEach(item => {
             const li = document.createElement("li");
-            li.textContent = item;
+            li.textContent = item.textContent;
             ul.appendChild(li);
         });
 
         section.appendChild(ul);
         content.appendChild(section);
-    }
+    });
 }
-
-// Packliste beim Laden der Seite laden
-window.onload = loadPackliste;
